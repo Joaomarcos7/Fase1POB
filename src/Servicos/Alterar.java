@@ -25,12 +25,12 @@ public class Alterar {
 		//localizar pessoa com nome joao
 		Query q = manager.query();
 		q.constrain(Paciente.class);  				
-		q.descend("nome").constrain("joao");		 
+		q.descend("nome").constrain("João");		 
 		List<Paciente> resultados = q.execute(); // select p from Pessoa p where p.nome="joao"
 		
 		if(resultados.size()>0) {
 			Paciente p =  resultados.get(0);
-			p.setNome("joana");
+			p.setNome("Julio");
 			
 			//adicionar novo telefone
 			p.adicionar(new Atendimento(5,LocalDateTime.now().toString()));;

@@ -1,5 +1,6 @@
 package Servicos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.db4o.ObjectContainer;
@@ -22,20 +23,33 @@ public class Deletar {
 	}
 
 	public void apagar() {
-		//localizar pessoa com nome joana
 		Query q = manager.query();
 		q.constrain(Paciente.class);
-		q.descend("nome").constrain("joana");
-		List<Paciente> resultados = q.execute(); // select p from Pessoa p where p.nome="maria"
+		q.descend("nome").constrain("João");
+		List<Paciente> resultados = q.execute(); 
 
 		if (resultados.size() > 0) {
-			//apagar joana
+		
 			Paciente p = resultados.get(0);
 			manager.delete(p);
 			manager.commit();
 			System.out.println("apagou joana e seus telefones (cascata)");
 		} else
 			System.out.println("pessoa inexistente");
+	}
+	
+	
+	public void apagarTodos() {
+		Query q= manager.query();
+		
+		q.constrain(Atendimento.class);
+		List<Atendimento> atendimentos = q.execute();
+		
+		for(Atendimento a : atendimentos){
+			manager.delete(a);
+		}
+		manager.commit();
+		System.out.println("apagamos todos os atendimentos e sua cascata");
 	}
 
 	// =================================================

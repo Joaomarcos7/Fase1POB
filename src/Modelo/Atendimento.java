@@ -50,5 +50,10 @@ public class Atendimento {
 		this.plano = plano;
 		paciente.adicionar(this);
 	}
+
+	@Override
+	public String toString() {
+		return "Atendimento [id=" + id + ", data=" + data + ", paciente=" + paciente.toString() + ", plano=" + plano.toString() + "]";
+	}
 	
 }

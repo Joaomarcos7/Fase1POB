@@ -28,11 +28,16 @@ public class Cadastrar {
 			paciente = new Paciente("14059714445", "João");
 			plano = new Plano("Standard");
 			a = new Atendimento(1,LocalDateTime.now().toString());
+			Atendimento a2= new Atendimento(1,"02/09/2023");
+			
+			a2.setPaciente(paciente);
+			a2.setPlano(plano);
 
 			a.setPaciente(paciente);
 			a.setPlano(plano);
-
+			
 			manager.store(a);
+			manager.store(a2);
 			manager.commit();
 
 		}
@@ -68,8 +73,28 @@ public class Cadastrar {
 
 			a = new Atendimento(1, LocalDateTime.now().toString());
 
-			paciente.adicionar(a);
-			plano.adicionar(a);
+			a.setPaciente(paciente);
+			a.setPlano(plano);
+
+			manager.store(a);
+			manager.commit();
+
+		}
+
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		try {
+
+			paciente = new Paciente("1405971443345", "Lucas");
+
+			plano = new Plano("Premium");
+
+			a = new Atendimento(4, "28-08-2023");
+
+			a.setPaciente(paciente);
+			a.setPlano(plano);
 
 			manager.store(a);
 			manager.commit();
@@ -81,6 +106,8 @@ public class Cadastrar {
 		}
 
 		System.out.println("cadastro realizado com sucesso!");
+
+	
 
 	}
 

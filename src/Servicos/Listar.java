@@ -32,7 +32,7 @@ public class Listar {
 		q.constrain(Paciente.class);  				
 		List<Paciente> resultados = q.execute();
 		for(Paciente p: resultados)
-			System.out.println(p);
+			System.out.println(p.toString());
 	}
 	public void listarAtendimentos(){
 		System.out.println("\n---listagem dos atendimentos:");
@@ -41,17 +41,17 @@ public class Listar {
 		q.constrain(Atendimento.class);  				
 		List<Atendimento> resultados = q.execute();
 		for(Atendimento a: resultados)
-			System.out.println(a);
+			System.out.println(a.toString());
 	}
 
 	public void listarPlanos(){
-		System.out.println("\n---listagem dos professores:");
+		System.out.println("\n---listagem dos planos:");
 		
 		Query q = manager.query();
 		q.constrain(Plano.class);  				
 		List<Plano> resultados = q.execute();
 		for(Plano p: resultados)
-			System.out.println(p);
+			System.out.println(p.toString());
 	}
 
 

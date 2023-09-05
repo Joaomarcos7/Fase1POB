@@ -55,6 +55,12 @@ public class Paciente {
 		public void SetAtendimentos(TreeMap<Integer,Atendimento> lista ) {
 			this.lista= lista;
 		}
+
+
+		@Override
+		public String toString() {
+			return "Paciente [CPF=" + CPF + ", Nome=" + Nome + " ]";
+		}
 	
 	}
 	

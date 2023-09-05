@@ -39,6 +39,11 @@ public class Plano {
 			throw new Exception("nao contem essa chave na lista!");
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Plano [nome=" + nome + "]";
+	}
 	
 	
 
