@@ -11,9 +11,13 @@ public class Atendimento {
 	
 	
 	
-	public Atendimento(int id, String data) {
+	public Atendimento(int id, String data, Paciente paciente, Plano plano) {
 		this.data=data;
 		this.id=id;
+		this.paciente=paciente;
+		paciente.adicionar(this);
+		this.plano=plano;
+		plano.adicionar(this);
 		
 	}
 

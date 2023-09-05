@@ -67,7 +67,7 @@ private  class Filtro implements Evaluation {
 		//obter cada objeto da classe Pessoa que esta no banco
 		Paciente p = (Paciente) candidate.getObject();
 		
-		if(p.getAtendimentos().size()>2) 
+		if(p.getAtendimentos().size()>=2) 
 			candidate.include(true); 	//incluir objeto no resultado da consulta
 		else		
 			candidate.include(false);	//excluir objeto do resultado da consulta

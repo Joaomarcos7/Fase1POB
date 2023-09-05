@@ -15,43 +15,39 @@ public class Alterar {
 
 	public Alterar(){
 		manager = Util.conectarBanco();
-		atualizar();
+		atualizar(); //altera paciente do atendimento de id 4
 		Util.desconectar();
 
 		System.out.println("\n\n aviso: feche sempre o plugin OME antes de executar aplica��o");
 	}
 
 	public void atualizar(){
-		//localizar pessoa com nome joao
+		//localizar paciente com nome joao
 		Query q = manager.query();
 		q.constrain(Paciente.class);  				
-		q.descend("nome").constrain("João");		 
-		List<Paciente> resultados = q.execute(); // select p from Pessoa p where p.nome="joao"
+		q.descend("Nome").constrain("João");		 
+		List<Paciente> pacientes = q.execute(); 
 		
-		if(resultados.size()>0) {
-			Paciente p =  resultados.get(0);
-			p.setNome("Julio");
-			
-			//adicionar novo telefone
-			p.adicionar(new Atendimento(5,LocalDateTime.now().toString()));;
-			
-			//remover telefone existente
-			Atendimento a = p.getAtendimentos().get(5);
-			try {
-			p.remover(5);  
-			a.setPaciente(null);	 	//este objeto pode ficar� orfao no banco 
-			}
-			catch(Exception e){
-				e.getMessage();
-			}
-			manager.store(p);
-			manager.store(a);	
-			manager.delete(a);	//deletar objeto orfao no banco 
-			manager.commit();
-			System.out.println("alterou nome e telefones de joao");
+		
+		Query q2= manager.query();
+		q2.constrain(Atendimento.class);
+		q2.descend("id").constrain(4);
+		List<Atendimento> atendimentos= q2.execute();
+		
+		if(pacientes.isEmpty() || atendimentos.isEmpty()){
+			System.out.println("joao inexistente ou atendimento de id 4 inexistente");
 		}
-		else
-			System.out.println("joao inexistente");
+		else {
+			Paciente p =  pacientes.get(0);
+			Atendimento a= atendimentos.get(0);
+			
+			a.setPaciente(p);
+			manager.store(a);
+			manager.commit();
+			
+			System.out.println("alterou o paciente do atendimento de id 4");
+		}
+			
 	}
 
 

@@ -16,7 +16,7 @@ public class Deletar {
 
 	public Deletar() {
 		manager = Util.conectarBanco();
-		apagar();
+		apagar(); //apaga paciente João e suas cascatas!!
 		Util.desconectar();
 		
 		System.out.println("\n\n aviso: feche sempre o plugin OME antes de executar aplica��o");
@@ -25,7 +25,7 @@ public class Deletar {
 	public void apagar() {
 		Query q = manager.query();
 		q.constrain(Paciente.class);
-		q.descend("nome").constrain("João");
+		q.descend("Nome").constrain("João");
 		List<Paciente> resultados = q.execute(); 
 
 		if (resultados.size() > 0) {
@@ -33,9 +33,9 @@ public class Deletar {
 			Paciente p = resultados.get(0);
 			manager.delete(p);
 			manager.commit();
-			System.out.println("apagou joana e seus telefones (cascata)");
+			System.out.println("apagou paciente João");
 		} else
-			System.out.println("pessoa inexistente");
+			System.out.println("paciente inexistente");
 	}
 	
 	
