@@ -41,7 +41,7 @@ public class Consultar {
 		}
 		
 		
-		System.out.println("\n---Pacientes com mais de 2 atendimentos agendados");
+		System.out.println("\n---Pacientes com 2 ou mais atendimentos agendados");
 		Query q3 = manager.query();
 		q3.constrain(Paciente.class);  
 		q3.constrain( new Filtro() );
@@ -65,7 +65,7 @@ public class Consultar {
 private  class Filtro implements Evaluation {
 	public void evaluate(Candidate candidate) {
 		//obter cada objeto da classe Pessoa que esta no banco
-		Paciente p = (Paciente) candidate.getObject();
+		Paciente p = (Paciente) candidate.getObject(); 
 		
 		if(p.getAtendimentos().size()>=2) 
 			candidate.include(true); 	//incluir objeto no resultado da consulta

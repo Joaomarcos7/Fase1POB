@@ -16,7 +16,7 @@ public class Deletar {
 
 	public Deletar() {
 		manager = Util.conectarBanco();
-		apagar(); //apaga paciente João e suas cascatas!!
+		apagar();
 		Util.desconectar();
 		
 		System.out.println("\n\n aviso: feche sempre o plugin OME antes de executar aplica��o");
@@ -24,22 +24,22 @@ public class Deletar {
 
 	public void apagar() {
 		Query q = manager.query();
-		q.constrain(Paciente.class);
-		q.descend("Nome").constrain("João");
-		List<Paciente> resultados = q.execute(); 
-
+		q.constrain(Atendimento.class);
+		q.descend("id").constrain(4);
+		List<Atendimento> resultados = q.execute(); 
+		
 		if (resultados.size() > 0) {
 		
-			Paciente p = resultados.get(0);
-			manager.delete(p);
+			Atendimento a= resultados.get(0);
+			manager.delete(a);
 			manager.commit();
-			System.out.println("apagou paciente João");
+			System.out.println("apagou Atendimento de id 4");
 		} else
-			System.out.println("paciente inexistente");
+			System.out.println("Atendimento inexistente");
 	}
 	
 	
-	public void apagarTodos() {
+	public void apagarTodos() { //quando quero zerar o banco!
 		Query q= manager.query();
 		
 		q.constrain(Atendimento.class);
@@ -49,9 +49,27 @@ public class Deletar {
 			manager.delete(a);
 		}
 		manager.commit();
-		System.out.println("apagamos todos os atendimentos e sua cascata");
+		System.out.println("apagamos todos os atendimentos e suas cascata");
 	}
 
+	
+	
+	public void apagarPaciente() {
+		Query q = manager.query();
+		q.constrain(Paciente.class);
+		q.descend("Nome").constrain("Felipe");
+		List<Paciente> resultados = q.execute(); 
+		
+		if (resultados.size() > 0) {
+		
+			Paciente a= resultados.get(0);
+			manager.delete(a);
+			manager.commit();
+			System.out.println("apagou Atendimento de id 4");
+		} else
+			System.out.println("Atendimento inexistente");
+		
+	}
 	// =================================================
 	public static void main(String[] args) {
 		new Deletar();

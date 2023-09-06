@@ -24,14 +24,14 @@ public class Util {
 		config.common().messageLevel(0);
 		
 		
-		config.common().objectClass(Atendimento.class).cascadeOnDelete(true);;
-		config.common().objectClass(Atendimento.class).cascadeOnUpdate(true);;
+		config.common().objectClass(Atendimento.class).cascadeOnDelete(false);
+		config.common().objectClass(Atendimento.class).cascadeOnUpdate(true);
 		config.common().objectClass(Atendimento.class).cascadeOnActivate(true);
-		config.common().objectClass(Paciente.class).cascadeOnDelete(true);;
-		config.common().objectClass(Paciente.class).cascadeOnUpdate(true);;
+		config.common().objectClass(Paciente.class).cascadeOnDelete(false);
+		config.common().objectClass(Paciente.class).cascadeOnUpdate(true);
 		config.common().objectClass(Paciente.class).cascadeOnActivate(true);
-		config.common().objectClass(Plano.class).cascadeOnDelete(true);;
-		config.common().objectClass(Plano.class).cascadeOnUpdate(true);;
+		config.common().objectClass(Plano.class).cascadeOnDelete(false);
+		config.common().objectClass(Plano.class).cascadeOnUpdate(true);
 		config.common().objectClass(Plano.class).cascadeOnActivate(true);
 		
 		
