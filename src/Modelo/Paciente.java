@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class Paciente {
@@ -9,7 +10,7 @@ public class Paciente {
 	
 	String Nome;
 	
-	TreeMap<Integer,Atendimento> lista= new TreeMap<Integer,Atendimento>();
+	ArrayList<Atendimento> lista= new ArrayList<>();
 	
 	public Paciente(String CPF,String Nome) {
 		this.CPF=CPF;
@@ -34,33 +35,32 @@ public class Paciente {
 	}
 	
 	public void adicionar(Atendimento a){
-		lista.put(a.getId(), a);
+		this.lista.add(a);
 	}
 	
-	public void remover(int a) throws Exception {
-		if(lista.containsKey(a)) {
-			lista.remove(a);
-		}
-		else {
-			throw new Exception("nao contem essa chave na lista!");
-			}
-		}
 
 		
-		public TreeMap<Integer,Atendimento> getAtendimentos(){
+	public ArrayList<Atendimento> getAtendimentos(){
 			return this.lista;
 		}
 
 	
-		public void SetAtendimentos(TreeMap<Integer,Atendimento> lista ) {
+	public void SetAtendimentos(ArrayList<Atendimento> lista ) {
 			this.lista= lista;
 		}
 
 
-		@Override
-		public String toString() {
-			return "Paciente [CPF=" + CPF + ", Nome=" + Nome + " ]";
-		}
+	@Override
+	public String toString() {
+		return "Paciente [CPF=" + CPF + ", Nome=" + Nome + ", lista=" + this.lista.toString() + "]";
+	}
+	
+	public String ToStringPattern() {
+		return "Paciente [CPF=" + CPF + ", Nome=" + Nome + "]";
+	}
+	
+
+
 	
 	}
 	

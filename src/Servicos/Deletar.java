@@ -16,7 +16,7 @@ public class Deletar {
 
 	public Deletar() {
 		manager = Util.conectarBanco();
-		apagar();
+		apagarTodos();
 		Util.desconectar();
 		
 		System.out.println("\n\n aviso: feche sempre o plugin OME antes de executar aplica��o");
@@ -45,9 +45,28 @@ public class Deletar {
 		q.constrain(Atendimento.class);
 		List<Atendimento> atendimentos = q.execute();
 		
+		Query q2= manager.query();
+		
+		q2.constrain(Paciente.class);
+		List<Paciente> pacientes= q2.execute();
+		
+		Query q3= manager.query();
+		
+		q3.constrain(Plano.class);
+		List<Plano> planos= q3.execute();
+		
 		for(Atendimento a : atendimentos){
 			manager.delete(a);
 		}
+
+		for(Paciente p : pacientes){
+			manager.delete(p);
+		}
+
+		for(Plano pl : planos){
+			manager.delete(pl);
+		}
+		
 		manager.commit();
 		System.out.println("apagamos todos os atendimentos e suas cascata");
 	}
@@ -70,6 +89,8 @@ public class Deletar {
 			System.out.println("Atendimento inexistente");
 		
 	}
+	
+	
 	// =================================================
 	public static void main(String[] args) {
 		new Deletar();

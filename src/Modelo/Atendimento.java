@@ -57,7 +57,7 @@ public class Atendimento {
 
 	@Override
 	public String toString() {
-		return "Atendimento [id=" + id + ", data=" + data + ", paciente=" + paciente.toString() + ", plano=" + plano.toString() + "]";
+		return "Atendimento [id=" + id + ", data=" + data + ", paciente=" + paciente.ToStringPattern()+ ", plano=" + plano.ToStringPattern() + "]";
 	}
 	
 }

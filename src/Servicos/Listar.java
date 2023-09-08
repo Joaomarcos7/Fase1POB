@@ -20,7 +20,7 @@ public class Listar {
 		listarAtendimentos();
 		listarPlanos();
 		listarPacientes();
-		Util.desconectar();
+		Util.desconectar();				
 		
 		System.out.println("\n\n aviso: feche sempre o plugin OME antes de executar aplica��o");
 	}

@@ -1,14 +1,11 @@
 package Modelo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.TreeMap;
 
 public class Plano {
 
 	String nome;
-	TreeMap<Integer, Atendimento> lista=new TreeMap<Integer,Atendimento>();
-	
+	ArrayList<Atendimento> lista = new ArrayList<Atendimento>();
 	
 	
 	public Plano(String nome) {
@@ -28,21 +25,17 @@ public class Plano {
 	
 
 	public void adicionar(Atendimento a){
-		lista.put(a.getId(), a);
-	}
-	
-	public void remover(int a) throws Exception {
-		if(lista.containsKey(a)) {
-			lista.remove(a);
-		}
-		else {
-			throw new Exception("nao contem essa chave na lista!");
-		}
+		lista.add(a);
 	}
 
 	@Override
 	public String toString() {
-		return "Plano [nome=" + nome + "]";
+		return "Plano [nome=" + nome + ", lista=" + lista.toString() + "]";
+	}
+	
+
+	public String ToStringPattern() {
+		return "Paciente [  " +  "Nome=" + this.nome + "]";
 	}
 	
 	

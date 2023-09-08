@@ -37,11 +37,13 @@ public class Cadastrar {
 			Atendimento atendimento2= new Atendimento(2,"28/08/2023",paciente1,plano1);
 			Atendimento atendimento3= new Atendimento(3,"28/08/2023",paciente2,plano2);
 			Atendimento atendimento4= new Atendimento(4,"25/08/2023",paciente3,plano2);
+			Atendimento atendimento5 = new Atendimento(5,"31/08/2023",paciente1,plano1);
 			
 			manager.store(atendimento1);
 			manager.store(atendimento2);
 			manager.store(atendimento3);
 			manager.store(atendimento4);
+			manager.store(atendimento5);
 			
 			manager.commit();			
 			
@@ -51,11 +53,7 @@ public class Cadastrar {
 			System.out.println(e.getMessage());
 		}
 
-	
-
 		System.out.println("cadastro realizado com sucesso!");
-
-	
 
 	}
 
